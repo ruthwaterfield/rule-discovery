@@ -1,17 +1,15 @@
 import React from 'react';
-import './App.css';
 import Instructions from "./instructions";
-import Header from "./header";
 import GuessGenerator from "./guessGenerator";
-
+import {Container} from "react-bootstrap";
 
 function App() {
   return (
-    <div className="App">
-      <Header text={'Rule Discovery'}/>
+    <Container className="App">
+      <h1>Rule Discovery</h1>
       <Instructions/>
       <GuessGenerator/>
-    </div>
+    </Container>
   );
 }
 
