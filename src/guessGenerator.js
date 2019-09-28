@@ -40,7 +40,7 @@ class GuessGenerator extends Component {
         <Button name={'newGuess'} onClick={this.handleNewGuess} disabled={this.state.ruleStated}>
           New guess
         </Button>
-        <InputGroup className={"mt-2"}>
+        <InputGroup className={"mt-3 mb-5"}>
           <FormControl
             type="text"
             disabled={this.state.ruleStated}
