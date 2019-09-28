@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Instructions = () => (
-  <div className={'section'}>
-    <h1>Instructions</h1>
+  <div>
+    <h3>Instructions</h3>
     <p>
       In this task we are interested in how students think "scientifically" in a simulated experimental setting. You
       will be given
