@@ -32,17 +32,17 @@ class Guess extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-if (!Number.isInteger(+this.state.number1) ||
+    if (!Number.isInteger(+this.state.number1) ||
       !Number.isInteger(+this.state.number2) ||
       !Number.isInteger(+this.state.number3)) {
       this.setState({feedback: 'Please enter 3 integers', feedbackVariant: 'warning'})
     } else {
       this.setState({disabled: true})
-  if (this.doNumbersConform(this.state.number1, this.state.number2, this.state.number3)){
-    this.setState({feedback: 'Conforms', feedbackVariant: 'success'})
-  } else {
-    this.setState({feedback: 'Does not Conform', feedbackVariant: 'danger'})
-  }
+      if (this.doNumbersConform(this.state.number1, this.state.number2, this.state.number3)) {
+        this.setState({feedback: 'Conforms', feedbackVariant: 'success'})
+      } else {
+        this.setState({feedback: 'Does not Conform', feedbackVariant: 'danger'})
+      }
     }
   }
 
@@ -58,17 +58,16 @@ if (!Number.isInteger(+this.state.number1) ||
             <Form.Group controlId="hypothesis">
               <Form.Label>Hypothesis {this.props.guessNumber}:</Form.Label>
               <Form.Control
-              required
+                required
                 type="text"
-                            name={'hypothesis'}
-                            placeholder="Enter hypothesis"
-                            value={this.state.hypothesis}
-                            onChange={this.handleInputChange}
-                            disabled={this.state.disabled}
+                name={'hypothesis'}
+                placeholder="Enter hypothesis"
+                value={this.state.hypothesis}
+                onChange={this.handleInputChange}
+                disabled={this.state.disabled || this.props.ruleStated}
               />
             </Form.Group>
           </Col>
-
           <Col>
             <Form.Group>
               <Form.Label>Numbers:</Form.Label>
@@ -78,22 +77,22 @@ if (!Number.isInteger(+this.state.number1) ||
                                 name={'number1'}
                                 value={this.state.number1}
                                 onChange={this.handleInputChange}
-                                disabled={this.state.disabled}/>
+                                disabled={this.state.disabled || this.props.ruleStated}/>
                 </Col>
                 <Col>
                   <Form.Control required type="text"
                                 name={'number2'}
                                 value={this.state.number2}
                                 onChange={this.handleInputChange}
-                                disabled={this.state.disabled}/></Col>
+                                disabled={this.state.disabled || this.props.ruleStated}/></Col>
                 <Col>
                   <Form.Control required type="text"
                                 name={'number3'}
                                 value={this.state.number3}
                                 onChange={this.handleInputChange}
-                                disabled={this.state.disabled}/></Col>
+                                disabled={this.state.disabled || this.props.ruleStated}/></Col>
                 <Col>
-                  <Button variant="primary" type="submit" disabled={this.state.disabled}>
+                  <Button variant="primary" type="submit" disabled={this.state.disabled || this.props.ruleStated}>
                     Submit
                   </Button>
                 </Col>

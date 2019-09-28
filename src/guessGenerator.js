@@ -3,8 +3,6 @@ import Guess from "./guess";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import {Container} from "react-bootstrap";
-import Row from "react-bootstrap/Row";
 
 class GuessGenerator extends Component {
   constructor(props) {
@@ -23,7 +21,11 @@ class GuessGenerator extends Component {
     this.setState({
       numberOfGuesses: this.state.numberOfGuesses + 1,
       guesses: [...this.state.guesses,
-        <Guess key={this.state.numberOfGuesses} guessNumber={this.state.numberOfGuesses}/>]
+        <Guess key={this.state.numberOfGuesses}
+               guessNumber={this.state.numberOfGuesses}
+               ruleStated={this.state.ruleStated}
+        />
+      ]
     });
   }
 
