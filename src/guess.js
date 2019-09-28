@@ -1,4 +1,8 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Alert from "react-bootstrap/Alert";
 
 class Guess extends Component {
   constructor(props) {
@@ -9,9 +13,9 @@ class Guess extends Component {
       number1: '',
       number2: '',
       number3: '',
-      feedback: ''
+      feedback: '',
+      feedbackVariant: ''
     }
-
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -28,62 +32,84 @@ class Guess extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if (!this.state.number1 ||
-      !this.state.number2 ||
-      !this.state.number3) {
-      this.setState({feedback: 'Please enter 3 integers'})
-    }
-    else if (!Number.isInteger(+this.state.number1) ||
+if (!Number.isInteger(+this.state.number1) ||
       !Number.isInteger(+this.state.number2) ||
       !Number.isInteger(+this.state.number3)) {
-      this.setState({feedback: 'Please enter 3 integers'})
+      this.setState({feedback: 'Please enter 3 integers', feedbackVariant: 'warning'})
     } else {
       this.setState({disabled: true})
-      this.setState({feedback: this.doNumbersConform(this.state.number1, this.state.number2, this.state.number3)})
+  if (this.doNumbersConform(this.state.number1, this.state.number2, this.state.number3)){
+    this.setState({feedback: 'Conforms', feedbackVariant: 'success'})
+  } else {
+    this.setState({feedback: 'Does not Conform', feedbackVariant: 'danger'})
+  }
     }
   }
 
   doNumbersConform(number1, number2, number3) {
-    if (number1 < number2 && number2 < number3) {
-      return 'Conforms'
-    } else {
-      return 'Does not Conform'
-    }
+    return (number1 < number2 && number2 < number3)
   }
 
   render() {
     return (
-      <Fragment>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Hypothesis:
-            <input
-              type="text"
-              name={'hypothesis'}
-              value={this.state.hypothesis}
-              onChange={this.handleInputChange}
-              disabled={this.state.disabled}
-            />
-          </label>
-          <label>
-            Numbers:
-            <input
-              type="text"
-              name={'number1'}
-              value={this.state.number1}
-              onChange={this.handleInputChange}
-              disabled={this.state.disabled}
-            />
-            <input type="text" name={'number2'} value={this.state.number2} onChange={this.handleInputChange} disabled={this.state.disabled}/>
-            <input type="text" name={'number3'} value={this.state.number3} onChange={this.handleInputChange} disabled={this.state.disabled}/>
-          </label>
-          <input type="submit" value="Submit" disabled={this.state.disabled}/>
-          <label>
-            Feedback:
-          <label>{this.state.feedback}</label>
-          </label>
-        </form>
-      </Fragment>
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Row>
+          <Col>
+            <Form.Group controlId="hypothesis">
+              <Form.Label>Hypothesis {this.props.guessNumber}:</Form.Label>
+              <Form.Control
+              required
+                type="text"
+                            name={'hypothesis'}
+                            placeholder="Enter hypothesis"
+                            value={this.state.hypothesis}
+                            onChange={this.handleInputChange}
+                            disabled={this.state.disabled}
+              />
+            </Form.Group>
+          </Col>
+
+          <Col>
+            <Form.Group>
+              <Form.Label>Numbers:</Form.Label>
+              <Form.Row>
+                <Col>
+                  <Form.Control required type="text"
+                                name={'number1'}
+                                value={this.state.number1}
+                                onChange={this.handleInputChange}
+                                disabled={this.state.disabled}/>
+                </Col>
+                <Col>
+                  <Form.Control required type="text"
+                                name={'number2'}
+                                value={this.state.number2}
+                                onChange={this.handleInputChange}
+                                disabled={this.state.disabled}/></Col>
+                <Col>
+                  <Form.Control required type="text"
+                                name={'number3'}
+                                value={this.state.number3}
+                                onChange={this.handleInputChange}
+                                disabled={this.state.disabled}/></Col>
+                <Col>
+                  <Button variant="primary" type="submit" disabled={this.state.disabled}>
+                    Submit
+                  </Button>
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group>
+              <Form.Label>Feedback:</Form.Label>
+              <Alert variant={this.state.feedbackVariant}>
+                {this.state.feedback}
+              </Alert>
+            </Form.Group>
+          </Col>
+        </Form.Row>
+      </Form>
     )
   }
 }

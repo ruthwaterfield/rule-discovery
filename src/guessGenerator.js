@@ -1,11 +1,12 @@
 import React, {Component, Fragment} from 'react'
 import Guess from "./guess";
+import Button from "react-bootstrap/Button";
 
 class GuessGenerator extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      numberOfGuesses: 1,
+      numberOfGuesses: 0,
       guesses: []
     }
 
@@ -14,8 +15,8 @@ class GuessGenerator extends Component {
 
   handleNewGuess() {
     this.setState({
-      numberOfGuesses: this.state.numberOfGuesses++,
-      guesses: [...this.state.guesses, <Guess key={this.state.numberOfGuesses}/>]
+      numberOfGuesses: this.state.numberOfGuesses + 1,
+      guesses: [...this.state.guesses, <Guess key={this.state.numberOfGuesses} guessNumber={this.state.numberOfGuesses}/>]
     });
   }
 
@@ -23,7 +24,7 @@ class GuessGenerator extends Component {
     return (
       <Fragment>
         {this.state.guesses}
-        <button name={'newGuess'} onClick={this.handleNewGuess} >New guess</button>
+        <Button name={'newGuess'} onClick={this.handleNewGuess} >New guess</Button>
       </Fragment>
     )
   }
