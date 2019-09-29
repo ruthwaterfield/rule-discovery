@@ -22,7 +22,7 @@ class GuessGenerator extends Component {
       numberOfGuesses: this.state.numberOfGuesses + 1,
       guesses: [...this.state.guesses,
         <Guess key={this.state.numberOfGuesses}
-               guessNumber={this.state.numberOfGuesses}
+               guessNumber={this.state.numberOfGuesses + 1}
                ruleStated={this.state.ruleStated}
         />
       ]

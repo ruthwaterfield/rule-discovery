@@ -53,61 +53,54 @@ class Guess extends Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Form.Row>
-          <Col>
-            <Form.Group controlId="hypothesis">
-              <Form.Label>Hypothesis {this.props.guessNumber}:</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name={'hypothesis'}
-                placeholder="Enter hypothesis"
-                value={this.state.hypothesis}
-                onChange={this.handleInputChange}
-                disabled={this.state.disabled || this.props.ruleStated}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group>
-              <Form.Label>Numbers:</Form.Label>
-              <Form.Row>
-                <Col>
-                  <Form.Control required type="text"
-                                name={'number1'}
-                                value={this.state.number1}
-                                onChange={this.handleInputChange}
-                                disabled={this.state.disabled || this.props.ruleStated}/>
-                </Col>
-                <Col>
-                  <Form.Control required type="text"
-                                name={'number2'}
-                                value={this.state.number2}
-                                onChange={this.handleInputChange}
-                                disabled={this.state.disabled || this.props.ruleStated}/></Col>
-                <Col>
-                  <Form.Control required type="text"
-                                name={'number3'}
-                                value={this.state.number3}
-                                onChange={this.handleInputChange}
-                                disabled={this.state.disabled || this.props.ruleStated}/></Col>
-                <Col>
-                  <Button variant="primary" type="submit" disabled={this.state.disabled || this.props.ruleStated}>
-                    Submit
-                  </Button>
-                </Col>
-              </Form.Row>
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group>
-              <Form.Label>Feedback:</Form.Label>
-              <Alert variant={this.state.feedbackVariant}>
-                {this.state.feedback}
-              </Alert>
-            </Form.Group>
-          </Col>
-        </Form.Row>
+        <Form.Group controlId="hypothesis">
+          <Form.Label>Hypothesis {this.props.guessNumber}:</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            name={'hypothesis'}
+            placeholder="Enter hypothesis"
+            value={this.state.hypothesis}
+            onChange={this.handleInputChange}
+            disabled={this.state.disabled || this.props.ruleStated}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Numbers:</Form.Label>
+          <Form.Row>
+            <Col>
+              <Form.Control required type="text"
+                            name={'number1'}
+                            value={this.state.number1}
+                            onChange={this.handleInputChange}
+                            disabled={this.state.disabled || this.props.ruleStated}/>
+            </Col>
+            <Col>
+              <Form.Control required type="text"
+                            name={'number2'}
+                            value={this.state.number2}
+                            onChange={this.handleInputChange}
+                            disabled={this.state.disabled || this.props.ruleStated}/>
+            </Col>
+            <Col>
+              <Form.Control required type="text"
+                            name={'number3'}
+                            value={this.state.number3}
+                            onChange={this.handleInputChange}
+                            disabled={this.state.disabled || this.props.ruleStated}/>
+            </Col>
+            <Col>
+              <Button variant="primary" type="submit" disabled={this.state.disabled || this.props.ruleStated}>
+                Submit
+              </Button>
+            </Col>
+          </Form.Row>
+        </Form.Group>
+        <Form.Group>
+          <Alert variant={this.state.feedbackVariant}>
+            {this.state.feedback}
+          </Alert>
+        </Form.Group>
       </Form>
     )
   }
