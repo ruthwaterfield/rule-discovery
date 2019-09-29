@@ -18,6 +18,11 @@ class Guess extends Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.ruleStated = this.ruleStated.bind(this);
+  }
+
+  ruleStated() {
+    this.setState({disabled: true})
   }
 
   handleInputChange(event) {
@@ -62,7 +67,7 @@ class Guess extends Component {
             placeholder="Enter hypothesis"
             value={this.state.hypothesis}
             onChange={this.handleInputChange}
-            disabled={this.state.disabled || this.props.ruleStated}
+            disabled={this.state.disabled}
           />
         </Form.Group>
         <Form.Group>
@@ -73,21 +78,21 @@ class Guess extends Component {
                             name={'number1'}
                             value={this.state.number1}
                             onChange={this.handleInputChange}
-                            disabled={this.state.disabled || this.props.ruleStated}/>
+                            disabled={this.state.disabled}/>
             </Col>
             <Col>
               <Form.Control required type="text"
                             name={'number2'}
                             value={this.state.number2}
                             onChange={this.handleInputChange}
-                            disabled={this.state.disabled || this.props.ruleStated}/>
+                            disabled={this.state.disabled}/>
             </Col>
             <Col>
               <Form.Control required type="text"
                             name={'number3'}
                             value={this.state.number3}
                             onChange={this.handleInputChange}
-                            disabled={this.state.disabled || this.props.ruleStated}/>
+                            disabled={this.state.disabled}/>
             </Col>
             <Col>
               <Button variant="primary" type="submit" disabled={this.state.disabled || this.props.ruleStated}>
@@ -107,5 +112,3 @@ class Guess extends Component {
 }
 
 export default Guess
-
-

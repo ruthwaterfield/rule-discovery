@@ -15,22 +15,25 @@ class GuessGenerator extends Component {
 
     this.handleNewGuess = this.handleNewGuess.bind(this);
     this.handleStateRule = this.handleStateRule.bind(this);
+    this.ruleStated = React.createRef()
   }
 
   handleNewGuess() {
-    this.setState({
-      numberOfGuesses: this.state.numberOfGuesses + 1,
-      guesses: [...this.state.guesses,
-        <Guess key={this.state.numberOfGuesses}
-               guessNumber={this.state.numberOfGuesses + 1}
-               ruleStated={this.state.ruleStated}
-        />
-      ]
-    });
+    this.setState((state) => {
+      return {
+        numberOfGuesses: state.numberOfGuesses + 1,
+        guesses: [
+          ...state.guesses,
+          <Guess key={state.numberOfGuesses}
+                 ref={this.ruleStated}/>
+                 ]
+      }
+    })
   }
 
   handleStateRule() {
-    this.setState({ruleStated: true});
+    this.setState({ruleStated: true})
+    this.ruleStated.current.ruleStated()
   }
 
   render() {
@@ -58,5 +61,3 @@ class GuessGenerator extends Component {
 }
 
 export default GuessGenerator
-
-
