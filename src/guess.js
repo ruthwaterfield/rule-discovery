@@ -47,7 +47,7 @@ class Guess extends Component {
   }
 
   doNumbersConform(number1, number2, number3) {
-    return (number1 < number2 && number2 < number3)
+    return (parseInt(number1) < parseInt(number2) && parseInt(number2) < parseInt(number3))
   }
 
   render() {
