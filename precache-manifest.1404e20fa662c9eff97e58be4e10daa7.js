@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dd46ffe53bbdce8b8cc844b027b7a453",
+    "revision": "af5e355b0b3c1e12c592a500214c51be",
     "url": "/rule-discovery/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/rule-discovery/static/js/2.3d28b887.chunk.js"
   },
   {
-    "revision": "92891a5f0be13cccdd9d",
-    "url": "/rule-discovery/static/js/main.68c5d114.chunk.js"
+    "revision": "f3d544586800c7a154e3",
+    "url": "/rule-discovery/static/js/main.0d46af7b.chunk.js"
   },
   {
     "revision": "12be36ad03b942eb6cb3",
