@@ -25,6 +25,7 @@ class GuessGenerator extends Component {
         guesses: [
           ...state.guesses,
           <Guess key={state.numberOfGuesses}
+                 guessNumber={state.numberOfGuesses + 1}
                  ref={this.ruleStated}/>
                  ]
       }
@@ -47,6 +48,7 @@ class GuessGenerator extends Component {
           <FormControl
             type="text"
             disabled={this.state.ruleStated}
+            placeholder="Enter rule"
           />
           <InputGroup.Append>
             <Button name={'stateRule'} variant="outline-secondary" onClick={this.handleStateRule}
